@@ -1,0 +1,47 @@
+#config-file
+namespace: apps-dev
+
+app:
+  name: s2i-sample
+  deploymentName: s2i-sample
+  deploymentConfigMatch: "s2i-sample"
+  version: "v1"
+  persistentVolumeClaim:
+    enabled: false
+
+configmap:
+  enabled: false
+
+secrets:
+  - name: s2i-sample-secrets
+    keys:
+      - name: EXAMPLE_SECRET
+        encoded: false
+        value: "abcd"
+        
+replicaCount: 1
+
+image:
+  nameVersion: image-registry.openshift-image-registry.svc:5000/app-pipeline-example/s2i-sample:1.0.0
+  pullPolicy: Always
+
+imagePullSecrets: []
+nameOverride: "s2i-sample"
+
+podSecurityContext: {}
+
+securityContext: {}
+
+ports:
+  - containerPort: 8080
+
+environments:
+  - name: EXAMPLE_ENV
+    value: "teste-envs"
+
+# service
+service:
+  type: NodePort
+  name: http
+  port: 8080
+  targetPort: 8080
