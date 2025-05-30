@@ -18,9 +18,6 @@ spec:
         deploymentconfig: {{ $.Values.app.deploymentConfigMatch }}
         version: {{ $.Values.app.version }}
         app: {{ $.Values.app.name }}
-      annotations:
-        sidecar.istio.io/inject: {{ $.Values.app.istio }}
-        sidecar.opentelemetry.io/inject: {{ $.Values.app.opentelemetry }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

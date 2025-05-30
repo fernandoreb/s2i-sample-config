@@ -1,16 +1,11 @@
 #config-file
-namespace: apps-dev
+namespace: app-pipeline-example
 
 app:
   name: s2i-sample
   deploymentName: s2i-sample
   deploymentConfigMatch: "s2i-sample"
   version: "v1"
-  persistentVolumeClaim:
-    enabled: false
-
-configmap:
-  enabled: false
 
 secrets:
   - name: s2i-sample-secrets
@@ -45,3 +40,10 @@ service:
   name: http
   port: 8080
   targetPort: 8080
+
+# route
+route:
+  enabled: true
+  name: s2i-sample
+  serviceName: s2i-sample
+  targetPort: http
