@@ -1,6 +1,7 @@
-#config-file
+#namespace name
 namespace: app-pipeline-example
 
+#application info
 app:
   name: s2i-sample
   deploymentName: s2i-sample
