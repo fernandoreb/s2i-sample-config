@@ -1,20 +1,13 @@
 #namespace
 namespace: app-pipeline-example
 
-#application info
+#application
 app:
   name: s2i-sample
   deploymentName: s2i-sample
   deploymentConfigMatch: "s2i-sample"
   version: "v1"
-
-secrets:
-  - name: s2i-sample-secrets
-    keys:
-      - name: EXAMPLE_SECRET
-        encoded: false
-        value: "abcd"
-        
+      
 replicaCount: 1
 
 image:
@@ -35,6 +28,13 @@ environments:
   - name: EXAMPLE_ENV
     value: "teste-envs"
 
+#secrets
+secrets:
+  - name: s2i-sample-secrets
+    keys:
+      - name: EXAMPLE_SECRET
+        encoded: false
+        value: "abcd"
 # service
 service:
   type: NodePort
